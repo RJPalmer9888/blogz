@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <style>
+        textarea {
+    margin: 10px 0; 
+    width: 540px; 
+    height: 120px;
+        }
+        .error { color: red }
+    </style>
+<h1>Create New Blog</h1>
+    <form method='post'>
+        <label>Blog Title:</label>
+        <br>
+        <input type="text" name='title' value='{{name}}' />
+        <p class="error">{{title_error}}</p>
+        <br>
+        <br>
+        <label>Blog Content:</label>
+        <br>
+        <textarea name='content' rows="4" value='{{content}}'></textarea>
+        <p class="error">{{content_error}}</p>
+        <br>
+        <input type="Submit" value='Add Blog' />
+    </form>
+    
+{% endblock %}

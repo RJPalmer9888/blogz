@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{user.username}}'s Posts</h1>
+    <form action="blog?user={{id}}" ></form>
+
+    <hr />
+    {% if blogs|length == 0 %}
+    <p>No blogs yet</p>
+    {% else %}
+            {% for blog in blogs %}
+            <input type="hidden" name="id" value="{{blog.id}}"/>
+            <h1><a href="/blog?id={{blog.id}}">{{blog.title}}</a></h1>
+            <p>{{blog.content}}</p>
+            {% for user in users %}
+            {% if user.id == blog.owner_id %}
+            <i>Written by <a href="/blog?user={{user.id}}">{{user.username}}</a></i>
+            {% endif %}
+            {% endfor %}
+            
+            <hr>
+            {% endfor %}
+        </ul>
+
+    
+
+
+{% endblock %}

@@ -9,12 +9,17 @@
     {% if blogs|length == 0 %}
     <p>No blogs yet</p>
     {% else %}
-
             {% for blog in blogs %}
+            {% for user in users %}
+            {% if user.id == blog.owner_id %}
             <input type="hidden" name="id" value="{{blog.id}}"/>
             <h1><a href="http://localhost:5000/blog?id={{blog.id}}">{{blog.title}}</a></h1>
             <p>{{blog.content}}</p>
+            <input type="hidden" name="uid" value="{{user.id}}"/>
+            <i>Written by <a href="http://localhost:5000/blog?user={{user.id}}">{{user.username}}</a></i>
             <hr>
+            {% endif %}
+            {% endfor %}
             {% endfor %}
         </ul>
     {% endif %}
